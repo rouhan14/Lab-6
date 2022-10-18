@@ -1,16 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool moveMin(vector<int> &in, vector<int> &out){
+bool moveMin(vector<int> &in, vector<int> &out)
+{
     bool status = true;
 
-    for (int i = 0; i < in.size(); i++){
+    for (int i = 0; i < in.size(); i++)
+    {
         out.push_back(in[i]);
     }
-    
-    for (int i = 0; i < out.size(); i++){
-        for (int j = 0; j < out.size() - 1; j++){
-            if (out[j] > out[i]){
+
+    for (int i = 0; i < out.size(); i++)
+    {
+        for (int j = 0; j < out.size() - 1; j++)
+        {
+            if (out[j] > out[i])
+            {
                 int temp;
                 temp = out[j];
                 out[j] = out[i];
@@ -19,8 +24,10 @@ bool moveMin(vector<int> &in, vector<int> &out){
         }
     }
 
-    for (int i = 0; i < in.size(); i++){
-        if ( in[i] != out[i] ){
+    for (int i = 0; i < in.size(); i++)
+    {
+        if (in[i] != out[i])
+        {
             status = false;
         }
     }
@@ -28,17 +35,44 @@ bool moveMin(vector<int> &in, vector<int> &out){
     return status;
 }
 
-int main(){
+bool testMoveMin(vector<int> &in, vector<int> &out)
+{
+    bool status = true;
+
+    for (int i = 0; i < in.size(); i++)
+    {
+        out.push_back(in[i]);
+    }
+
+    sort(out.begin(), out.end());
+
+    for (int i = 0; i < out.size(); i++)
+    {
+        if (in[i] != out[i])
+        {
+            status = false;
+        }
+    }
+
+    return status;
+}
+
+int main()
+{
     srand(time(0));
     vector<int> vec1;
     vector<int> vec2;
-    
-    for (int i = 0; i < 7; i++){
+    vector<int> vec3;
+    for (int i = 0; i < 7; i++)
+    {
         vec1.push_back(rand() % 100);
     }
-    for (int i = 0; i < 7; i++){
-        for (int j = 0; j < 6; j++){
-            if(vec1[j] > vec1[i]){
+    for (int i = 0; i < 7; i++)
+    {
+        for (int j = 0; j < 6; j++)
+        {
+            if (vec1[j] > vec1[i])
+            {
                 int temp;
                 temp = vec1[j];
                 vec1[j] = vec1[i];
@@ -46,10 +80,11 @@ int main(){
             }
         }
     }
-    
+
     vec1.push_back(rand() % 101);
 
     cout << "Output from my sorting function:\t" << moveMin(vec1, vec2) << endl;
+    cout << "Expected Output:\t\t\t" << testMoveMin(vec1, vec3) << endl;
 
     return 0;
 }
