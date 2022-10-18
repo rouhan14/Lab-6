@@ -10,22 +10,18 @@ bool moveMin(vector<int> &in, vector<int> &out)
         out.push_back(in[i]);
     }
 
-    for (int i = 0; i < out.size(); i++)
-    {
-        for (int j = 0; j < out.size() - 1; j++)
-        {
-            if (out[j] > out[i])
-            {
-                int temp;
-                temp = out[j];
-                out[j] = out[i];
-                out[i] = temp;
-            }
+    int temp;
+    int pos = out.size() - 1;
+    for (int i = out.size() - 2; i > -1; i--){
+        if (out[pos] < out[ i ]){
+            temp = out[i];
+            out[i] = out[pos];
+            out[pos] = temp;
+            pos--;
         }
     }
 
-    for (int i = 0; i < in.size(); i++)
-    {
+    for (int i = 0; i < in.size(); i++){
         if (in[i] != out[i])
         {
             status = false;
@@ -83,7 +79,7 @@ int main()
         }
     }
 
-    vec1.push_back(rand() % 101);
+    vec1.push_back(rand() % 100);
 
     cout << "Output from my sorting function:\t" << moveMin(vec1, vec2) << endl;
     cout << "Expected Output:\t\t\t" << testMoveMin(vec1, vec3) << endl;
