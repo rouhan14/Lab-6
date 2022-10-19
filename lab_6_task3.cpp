@@ -163,16 +163,61 @@ bool testMoveMin_with_variable_size(int vector_size)
 
 int main()
 {
+    clock_t start, end;
 
+    start = clock();
     cout << "Test case answer: " << testMoveMin() << endl;
+    end = clock();
 
-    cout << "Test case answer with 1000 inputs: " << testMoveMin_with_variable_size(1000) << endl;
+    double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+    cout << "Time taken by program is : " << fixed
+        << time_taken << setprecision(5);
+    cout << " sec " << endl
+        << endl;
 
-    cout << "Test case answer with 10000 inputs: " << testMoveMin_with_variable_size(10000) << endl;
+    start = clock();
+    cout << "Test case answer with 1000 inputs: " << testMoveMin_with_variable_size(1000) << endl
+        << endl;
+    end = clock();
 
+    time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+    cout << "Time taken by program is : " << fixed
+        << time_taken << setprecision(5);
+    cout << " sec " << endl
+        << endl;
+
+    start = clock();
+    cout << "Test case answer with 10000 inputs: " << testMoveMin_with_variable_size(10000) << endl
+        << endl;
+    end = clock();
+
+    time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+    cout << "Time taken by program is : " << fixed
+        << time_taken << setprecision(5);
+    cout << " sec " << endl
+        << endl;
+
+    start = clock();
     cout << "Test case answer with 100000 inputs: " << testMoveMin_with_variable_size(100000) << endl;
+    end = clock();
 
+    time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+    cout << "Time taken by program is : " << fixed
+        << time_taken << setprecision(5);
+    cout << " sec " << endl
+        << endl;
+
+    start = clock();
     cout << "Test case answer with 1000000 inputs: " << testMoveMin_with_variable_size(1000000) << endl;
+    end = clock();
+
+    time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+    cout << "Time taken by program is : " << fixed
+        << time_taken << setprecision(5);
+    cout << " sec " << endl
+        << endl;
+
+    
 
     return 0;
 }
