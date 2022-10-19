@@ -32,8 +32,7 @@ bool moveMin(vector<int> &in, vector<int> &out)
     return status;
 }
 
-bool testMoveMin(vector<int> &in, vector<int> &out)
-{
+bool testMoveMin(vector<int> &in, vector<int> &out){
     bool status = true;
 
     for (int i = 0; i < in.size(); i++)
@@ -57,10 +56,7 @@ bool testMoveMin(vector<int> &in, vector<int> &out)
 
 int main()
 {
-    srand(time(0));
-    vector<int> vec1;
-    vector<int> vec2;
-    vector<int> vec3;
+    
     for (int i = 0; i < 7; i++)
     {
         vec1.push_back(rand() % 100);
@@ -82,7 +78,6 @@ int main()
     vec1.push_back(rand() % 100);
 
     cout << "Output from my sorting function:\t" << moveMin(vec1, vec2) << endl;
-    cout << "Expected Output:\t\t\t" << testMoveMin(vec1, vec3) << endl;
 
     return 0;
 }
