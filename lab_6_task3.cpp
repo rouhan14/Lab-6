@@ -99,10 +99,80 @@ bool testMoveMin()
     return status;
 }
 
+
+// Generating different test cases.
+bool testMoveMin_with_variable_size(int vector_size)
+{
+    bool status = true;
+
+    /* Creating three vector:
+        vec1 -> all elements are sorted except the last element.
+        vec2 -> all elements are sorted using bubble sort. (Done in the moneMin function).
+        vec3 -> all elements are sorted using stl::sort() function.
+    */
+
+    srand(time(0)); // to randomize the value everytime we take it.
+    vector<int> vec1;
+    vector<int> vec2;
+    vector<int> vec3;
+
+    // Pushing random elements in the first vector.
+    for (int i = 0; i < vector_size - 1; i++)
+    {
+        vec1.push_back(rand() % 100);
+    }
+
+    // Sorting the first vector.
+    sort(vec1.begin(), vec1.end());
+
+    // Pushing a random element in the vectoor as mentioned in the lab.
+    vec1.push_back(rand() % 101);
+
+    // Sorting using sort function created from bubble sort.
+    bool bubble = moveMin(vec1, vec2);
+
+    // Sorting using sort function.
+    for (int i = 0; i < vec1.size(); i++)
+    {
+        vec3.push_back(vec1[i]);
+    }
+    sort(vec3.begin(), vec3.end());
+
+    // Comparing vectors that was sorted by sort function and the vector itself.
+    for (int i = 0; i < vec1.size(); i++)
+    {
+        if (vec1[i] != vec3[i])
+        {
+            status = false;
+            break;
+        }
+    }
+
+    // Comparing if the bubble sort and the sort function gave the same ans.
+    if (bubble == status)
+    {
+        status = true;
+    }
+    else
+    {
+        status = false;
+    }
+
+    return status;
+}
+
 int main()
 {
 
     cout << "Test case answer: " << testMoveMin() << endl;
+
+    cout << "Test case answer with 1000 inputs: " << testMoveMin_with_variable_size(1000) << endl;
+
+    cout << "Test case answer with 10000 inputs: " << testMoveMin_with_variable_size(10000) << endl;
+
+    cout << "Test case answer with 100000 inputs: " << testMoveMin_with_variable_size(100000) << endl;
+
+    cout << "Test case answer with 1000000 inputs: " << testMoveMin_with_variable_size(1000000) << endl;
 
     return 0;
 }
